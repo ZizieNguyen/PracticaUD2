@@ -117,6 +117,16 @@ public class CineDAW {
 
                         if (sala.charAt(posicion) == OCUPADA) {
                             System.out.println("Esta butaca ya está ocupada.");
+
+                            //sugiere la primera butaca libre de esa misma fila
+                            int inicioFila = (fila - 'A') * BUTACAS_POR_FILA;
+                            int libre = sala.indexOf(LIBRE, inicioFila);
+                            if (libre != -1 && libre < inicioFila + BUTACAS_POR_FILA) {
+                                System.out.println("Te sugerimos la butaca " +
+                                        (libre - inicioFila + 1));
+                            } else {
+                                System.out.println("No quedan butacas libres en esta fila.");
+                            }
                             break;
                         }
 
