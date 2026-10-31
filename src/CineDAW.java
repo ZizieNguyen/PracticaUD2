@@ -210,7 +210,36 @@ public class CineDAW {
                         break;
 
                     case 3:
+                        // Muestra las entradas vendidas con ternario
+                        System.out.println("Entradas vendidas: " +
+                                (entradasVendidas == 1 ? "1 entrada" : entradasVendidas + " entradas"));
 
+                        // Muestra la recaudación total
+                        System.out.println("Recaudación: " +
+                                (recaudacion / 100) + "," +
+                                (recaudacion % 100 < 10 ? "0" : "") +
+                                (recaudacion % 100) + " €");
+
+                        // Cuenta las butacas ocupadas y usa continue para saltar las butacas libres
+                        int butacasOcupadas = 0;
+                        for (int i = 0; i < sala.length(); i++) {
+                            if (sala.charAt(i) == LIBRE) {
+                                continue;
+                            }
+                            butacasOcupadas++;
+                        }
+
+                        // Calcula las butacas libres
+                        int butacasLibres = FILAS * BUTACAS_POR_FILA - butacasOcupadas;
+                        System.out.println("Butacas ocupadas: " + butacasOcupadas +
+                                " | libres: " + butacasLibres);
+
+                        // Calcula el porcentaje de ocupación
+                        double ocupacion = (double) butacasOcupadas /
+                                (FILAS * BUTACAS_POR_FILA) * 100;
+                        ocupacion = Math.round(ocupacion * 100.0) / 100.0; //Redondea hasta 2 decimales
+
+                        System.out.println("Ocupación: " + String.format("%.2f", ocupacion) + " %"); //Siempre mostra con 2 decimales
                         break;
 
                     case 0:
