@@ -56,7 +56,8 @@ public class CineDAW {
                         System.out.println("     P A N T A L L A");
                         System.out.println("   1 2 3 4   5 6 7 8");
 
-                        for (char fila = 'A'; fila <= 'F'; fila++) {
+                        for (int i = 0; i < FILAS; i++) {
+                            char fila = (char) ('A' + i);
                             System.out.print(fila + "  ");
 
                             for (int butaca = 1; butaca <= BUTACAS_POR_FILA; butaca++) {
@@ -102,7 +103,7 @@ public class CineDAW {
                                 butaca = scanner.nextInt();
                                 scanner.nextLine();
 
-                                if (butaca < 1 || butaca > 8) {
+                                if (butaca < 1 || butaca > BUTACAS_POR_FILA) {
                                     System.out.println("Butaca no válida. Debe estar entre 1 y 8.");
                                 }
                             } catch (InputMismatchException e) {
@@ -110,7 +111,7 @@ public class CineDAW {
                                 scanner.nextLine();
                                 butaca = 0;
                             }
-                        } while (butaca < 1 || butaca > 8);
+                        } while (butaca < 1 || butaca > BUTACAS_POR_FILA);
 
                         // Comprueba si está ocupada
                         int posicion = (fila - 'A') * BUTACAS_POR_FILA + (butaca - 1);
@@ -206,10 +207,7 @@ public class CineDAW {
                         System.out.println("Tarifa: " + tarifa);
                         System.out.println(mensajeDia);
 
-                        System.out.println("Total a pagar: " +
-                                (precio / 100) + "," +
-                                (precio % 100 < 10 ? "0" : "") +
-                                (precio % 100) + " €");
+                        System.out.println("Total a pagar: " + String.format("%d,%02d €", precio / 100, precio % 100));
 
                         // Marca la butaca comprada
                         sala = sala.substring(0, posicion) + OCUPADA + sala.substring(posicion + 1);
@@ -226,9 +224,7 @@ public class CineDAW {
 
                         // Muestra la recaudación total
                         System.out.println("Recaudación: " +
-                                (recaudacion / 100) + "," +
-                                (recaudacion % 100 < 10 ? "0" : "") +
-                                (recaudacion % 100) + " €");
+                                String.format("%d,%02d €", recaudacion / 100, recaudacion % 100));
 
                         // Cuenta las butacas ocupadas y usa continue para saltar las butacas libres
                         int butacasOcupadas = 0;
