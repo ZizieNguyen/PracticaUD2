@@ -32,19 +32,19 @@ public class LabTexto {
                         System.out.println("Caracteres: " + caracteres);
 
                         //Cuenta palabras
-                        int palabra = 0;
+                        int palabras = 0;
                         String fraseLimpia = frase.trim();
                         boolean dentroPalabra = false;
 
                         for (int i = 0; i < fraseLimpia.length(); i++) {
                             if (fraseLimpia.charAt(i) != ' ' && !dentroPalabra) {
-                                palabra++;
+                                palabras++;
                                 dentroPalabra = true;
                             } else if (fraseLimpia.charAt(i) == ' ') {
                                 dentroPalabra = false;
                             }
                         }
-                        System.out.println("Palabras: " + palabra);
+                        System.out.println("Palabras: " + palabras);
 
                         //Cuenta vocales, mayúsculas, dígitos
                         int vocales = 0;
@@ -135,19 +135,18 @@ public class LabTexto {
 
                         //Comprueba si cumple la longitud mínima
                         boolean longitudCumplido = contrasena.length() >= MIN_LONG;
-                        //Comprueba si contiene al menos una mayúscula
+                        //Comprueba si contiene al menos una mayúscula y  un dígito
                         boolean mayusCumplido = false;
-                        for (int i = 0; i < contrasena.length(); i++) {
-                            if (contrasena.charAt(i) >= 'A' && contrasena.charAt(i) <= 'Z') {
-                                mayusCumplido = true;
-                                break;
-                            }
-                        }
-                        //Comprueba si contiene al menos un dígito
                         boolean digitoCumplido = false;
                         for (int i = 0; i < contrasena.length(); i++) {
-                            if (contrasena.charAt(i) >= '0' && contrasena.charAt(i) <= '9') {
+                            char c = contrasena.charAt(i);
+                            if (c >= 'A' && c <= 'Z') {
+                                mayusCumplido = true;
+                            }
+                            if (c >= '0' && c <= '9') {
                                 digitoCumplido = true;
+                            }
+                            if (mayusCumplido && digitoCumplido) {
                                 break;
                             }
                         }
