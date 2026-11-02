@@ -52,7 +52,7 @@ public class CineDAW {
                 scanner.nextLine();
 
                 switch (opcion) {
-                    case 1:
+                    case 1: //Opción 1 — Ver sala
                         System.out.println("     P A N T A L L A");
                         System.out.println("   1 2 3 4   5 6 7 8");
 
@@ -71,7 +71,7 @@ public class CineDAW {
                         System.out.println("(- libre, X ocupada)\n");
                         break;
 
-                    case 2:
+                    case 2: //Opción 2 — Comprar entrada
                         if (sala.indexOf(LIBRE) == -1) {
                             System.out.println("La sala está completa.");
                             break;
@@ -219,7 +219,7 @@ public class CineDAW {
                         System.out.println("Entrada vendida: fila " + fila + ", butaca " + butaca + ".");
                         break;
 
-                    case 3:
+                    case 3: //Opción 3 — Estadísticas
                         // Muestra las entradas vendidas con ternario
                         System.out.println("Entradas vendidas: " +
                                 (entradasVendidas == 1 ? "1 entrada" : entradasVendidas + " entradas"));
@@ -247,12 +247,12 @@ public class CineDAW {
                         // Calcula el porcentaje de ocupación
                         double ocupacion = (double) butacasOcupadas /
                                 (FILAS * BUTACAS_POR_FILA) * 100;
-                        ocupacion = Math.round(ocupacion * 100.0) / 100.0; //Redondea hasta 2 decimales
+                        ocupacion = Math.round(ocupacion * 100.0) / 100.0; //Redondea a 2 decimales
 
-                        System.out.println("Ocupación: " + String.format("%.2f", ocupacion) + " %"); //Siempre mostra con 2 decimales
+                        System.out.println("Ocupación: " + String.format("%.2f", ocupacion) + " %"); //Muestra siempre dos decimales
                         break;
 
-                    case 0:
+                    case 0: //Opción 0 — Salir
                         System.out.println("¡Hasta pronto!");
                         break;
 
