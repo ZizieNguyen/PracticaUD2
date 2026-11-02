@@ -28,7 +28,7 @@ public class LabTexto {
                         String frase = scanner.nextLine();
 
                         //Cuenta caracteres
-                        int caracteres = frase.length();
+                        int caracteres = frase.replace(" ", "").length();
                         System.out.println("Caracteres: " + caracteres);
 
                         //Cuenta palabras
@@ -70,19 +70,13 @@ public class LabTexto {
                         System.out.println("Vocales: " + vocales + " | Mayúsculas: " + mayusculas + " | Dígitos: " + digitos );
 
                         //Comprueba si es un palíndromo
-                        String fraseMinus = frase.toLowerCase().trim();
-                        String fraseSinEspacio = "";
-                        for (int i = 0; i < fraseMinus.length(); i++) {
-                            if (fraseMinus.charAt(i) != ' ') {
-                                fraseSinEspacio += fraseMinus.charAt(i);
-                            }
-                        }
+                        String fraseMinusSinEspacio = frase.toLowerCase().replace(" ", "");
 
                         boolean esPalindromo = true;
 
-                        for (int i = 0; i < fraseSinEspacio.length() / 2; i++) {
-                            if (fraseSinEspacio.charAt(i) !=
-                                    fraseSinEspacio.charAt(fraseSinEspacio.length() - 1 - i)) {
+                        for (int i = 0; i < fraseMinusSinEspacio.length() / 2; i++) {
+                            if (fraseMinusSinEspacio.charAt(i) !=
+                                    fraseMinusSinEspacio.charAt(fraseMinusSinEspacio.length() - 1 - i)) {
                                 esPalindromo = false;
                                 break;
                             }
